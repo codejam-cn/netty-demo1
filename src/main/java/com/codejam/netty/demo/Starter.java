@@ -7,6 +7,14 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
+/**
+ * ByteBuffer 正确使用姿势
+ * 1. 向buffer写入数据，例如调用 channel.read(buffer)
+ * 2. 调用flip()切换至读模式
+ * 3. 从buffer读取数据，例如调用 buffer.get()
+ * 4. 调用clear(） 或 compact 切换至写模式
+ * 5. 重复1~4步骤
+ */
 @Slf4j
 public class Starter {
 
