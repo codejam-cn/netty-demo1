@@ -1,10 +1,13 @@
 package com.codejam.netty.demo;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
+@Slf4j
 public class Starter {
 
     public static void main(String[] args) throws IOException {
@@ -30,6 +33,8 @@ public class Starter {
                     break;
                 }
 
+                log.info("aaaaaaaaaa");
+
                 //buffer内容打印
                 buffer.flip();  //切换至读模式
 
@@ -37,6 +42,7 @@ public class Starter {
                 while (buffer.hasRemaining()) {
                     byte b = buffer.get(); //一次一个字节
                     System.out.print((char) b);
+
                 }
 
                 //读完以后，buffer切换成写模式
