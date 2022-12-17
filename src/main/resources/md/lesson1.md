@@ -1,0 +1,5 @@
+# ByteBuffer
+
+- capacity
+- position
+- limit
