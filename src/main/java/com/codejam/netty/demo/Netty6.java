@@ -18,28 +18,22 @@ import java.nio.file.Paths;
 public class Netty6 {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         String path2 = Netty6.class.getClassLoader().getResource("words.txt").getFile();
         System.out.println(path2);
 
-        try (FileChannel channel = new RandomAccessFile(path2, "r").getChannel()) {
 
-            ByteBuffer allocate1 = ByteBuffer.allocate(3);
-            ByteBuffer allocate2 = ByteBuffer.allocate(3);
-            ByteBuffer allocate3 = ByteBuffer.allocate(5);
-
-            allocate1.flip();
-
-            allocate2.flip();
-
-            allocate3.flip();
+        ByteBuffer allocate1 = StandardCharsets.UTF_8.encode("hello");
+        ByteBuffer allocate2 = StandardCharsets.UTF_8.encode("world");
+        ByteBuffer allocate3 = StandardCharsets.UTF_8.encode("你好");
 
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        //使用channel，将内容写入文件。
+        FileChannel channel1 = new RandomAccessFile("word2.txt", "rw").getChannel();
+
+
+        int read = channel1.write(allocate1);
+
     }
 }
